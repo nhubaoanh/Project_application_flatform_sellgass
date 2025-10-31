@@ -1,0 +1,12 @@
+#node_module
+node_modules/
+
+# BE/.env
+
+# === BIẾN MÔI TRƯỜNG (KHÔNG BAO GIỜ COMMIT) ===
+.env
+.env.local
+.env.*.local
+
+# === NODE MODULES ===
+node_modules/
