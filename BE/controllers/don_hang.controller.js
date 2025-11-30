@@ -129,7 +129,7 @@ const don_hangController = {
   },
 
   getDashboardData: (req, res) => {
-    console.log("🟡 Controller: vào getDashboardData");
+    // console.log("🟡 Controller: vào getDashboardData");
     don_hang.getDashboardData((err, data) => {
       if (err) {
         console.error("🔴 Lỗi từ model:", err);

@@ -47,6 +47,7 @@ const bannerRef = useRef<FlatList<any>>(null);
     try {
       setLoading(true);
       const res = await productService.getAllProducts();
+      console.log("🔹 Products:", res);
       if (res.success && res.data) {
         setProducts(res.data);
     }

@@ -1,6 +1,6 @@
 export const AuthService = {
     login(email: string, matkhau: string) {
-        return fetch('http://localhost:7890/api/vaitro/login', {
+        return fetch('http://localhost:7890/api/vaitro/loginAuth', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

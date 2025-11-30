@@ -23,7 +23,7 @@ import io, { Socket } from "socket.io-client";
 //     ? "http://localhost:7890"
 //     : "http://192.168.1.7:7890";
 
-const SOCKET_URL = "https://kdckwr3m-7890.asse.devtunnels.ms";
+const SOCKET_URL = "https://6jx7hnd2-7890.asse.devtunnels.ms/";
 
 const socket: Socket = io(SOCKET_URL, {
   transports: ["websocket"],

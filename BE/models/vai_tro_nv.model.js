@@ -58,4 +58,13 @@ vai_tro_nv.loginUser = (email, callback) => {
   })
 }
 
+vai_tro_nv.loginAuth = (email, callback) => {
+  const sqlString = "CALL sp_login(?)";
+  db.query(sqlString, [email], (err, result) => {
+    if (err) return callback(err);
+    callback(null, result[0][0]);
+    console.log("data",result[0][0]);
+  });
+};
+
 export default vai_tro_nv;

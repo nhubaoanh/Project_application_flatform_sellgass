@@ -6,6 +6,7 @@ import apiService, { ApiResponse } from "./apiService";
 class ProductService {
   // Lấy tất cả sản phẩm
   async getAllProducts(): Promise<ApiResponse<Product[]>> {
+    console.log("apiService", apiService);
     return apiService.makeRequest<Product[]>("/sanpham");
   }
 

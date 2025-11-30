@@ -32,7 +32,7 @@ const StaffChat: React.FC<StaffChatProps> = ({ userId, staffId, roomId }) => {
     useEffect(() => {
         if (!roomId) return;
 
-        const socket = io('https://kdckwr3m-7890.asse.devtunnels.ms', {
+        const socket = io('https://6jx7hnd2-7890.asse.devtunnels.ms/', {
             reconnection: true,
             reconnectionAttempts: 5,
             reconnectionDelay: 1000

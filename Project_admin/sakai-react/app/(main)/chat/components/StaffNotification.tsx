@@ -23,7 +23,7 @@ const StaffNotification: React.FC<StaffNotificationProps> = ({ onSelectCustomer 
     const opRef = React.useRef<OverlayPanel>(null);
 
     useEffect(() => {
-        const s = io('https://kdckwr3m-7890.asse.devtunnels.ms', {
+        const s = io('https://6jx7hnd2-7890.asse.devtunnels.ms/', {
             transports: ['websocket'],
             reconnection: true
         });

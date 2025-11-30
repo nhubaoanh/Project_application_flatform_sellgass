@@ -87,6 +87,7 @@ io.on("connection", (socket) => {
 app.post("/api/chat/createRoom", (req, res) => {
   const { userId, staffId } = req.body;
   const roomId = `chat_${userId}_${staffId}`;
+  console.log("Tạo phòng chat:", roomId);
   res.json({ roomId });
 });
 

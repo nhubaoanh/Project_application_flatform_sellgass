@@ -39,6 +39,8 @@ const vai_tro_nvController = {
   login: (req, res) => {
     const { email, matkhau } = req.body;
 
+    console.log(email, matkhau);
+
     vai_tro_nv.login(email, (err, user) => {
       if (err) {
         console.error(err);
@@ -110,6 +112,46 @@ const vai_tro_nvController = {
       });
     });
 
+  },
+
+  loginAuth: (req, res) => {
+    const { email } = req.body;
+    vai_tro_nv.loginAuth(email, (err, user) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: "Lỗi server" });
+      }
+
+      if (!user) {
+        return res.status(401).json({ message: "Sai email hoặc mật khẩu" });
+      }
+
+      // if (user.matkhau.trim() !== matkhau.trim()) {
+      //   return res.status(401).json({ message: "Sai email hoặc mật khẩu" });
+      // }
+
+      const token = jwt.sign(
+        { role: user.role, mavt: user.mavt, hoten: user.hoten },
+        JWT_SECRET,
+        { expiresIn: "2h" }
+      );
+
+      res.json({
+        success: true,
+        data: {
+          user: {
+            id: user.manv || user.makh, // 🔹 id chung
+            role: user.manv ? "employee" : "customer",
+            manv: user.manv || null,
+            makh: user.makh || null,
+            mavt: user.mavt || null,
+            hoten: user.hoten,
+            email: user.email,
+          },
+          token,
+        },
+      });
+    });
   }
 };
 export default vai_tro_nvController

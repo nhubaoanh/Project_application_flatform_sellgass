@@ -277,7 +277,7 @@ const ProductDetailScreen: React.FC<ProductDetailScreenProps> = ({
           >
             <Text style={styles.buttonText}>Thêm vào giỏ hàng</Text>
           </TouchableOpacity>
-
+{/* 
           <TouchableOpacity
             style={[styles.button, styles.buyNowButton]}
             onPress={handleBuyNow}
@@ -285,7 +285,7 @@ const ProductDetailScreen: React.FC<ProductDetailScreenProps> = ({
             <Text style={[styles.buttonText, styles.buyNowButtonText]}>
               Mua ngay
             </Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         {showSuccess && (
           <View style={styles.successMessage}>

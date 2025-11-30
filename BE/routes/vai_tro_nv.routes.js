@@ -8,6 +8,7 @@ router.get('/:id', authMiddleware, vai_tro_nvController.getById);
 router.post('/', authMiddleware, vai_tro_nvController.insert);
 router.post('/login', vai_tro_nvController.login);
 router.post('/loginUser', vai_tro_nvController.loginUser);
+router.post("/loginAuth", vai_tro_nvController.loginAuth);
 router.put('/:id',authMiddleware, vai_tro_nvController.update);
 router.delete('/:id', authMiddleware, vai_tro_nvController.delete);
 

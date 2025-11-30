@@ -27,6 +27,8 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import { Skeleton } from 'primereact/skeleton';
 import { Chip } from 'primereact/chip';
 import { Dialog } from 'primereact/dialog';
+import { OrderService } from '@/demo/service/OrderService';
+import { userStorage } from '@/demo/service/userStorage';
 
 
 
@@ -199,6 +201,29 @@ const LandingPage = () => {
         router.push('/auth/register');
     };
 
+    const [userId, setUserId] = useState<number | null>(null);
+
+    // lấy ra user login
+    useEffect(() => {
+       const user = userStorage.getCurrentUser();
+       console.log('User:', user);
+       setUserId(user ? user.userId : null);
+    });
+
+    // const handleBuyNow = (product : Demo.Order) =>  {
+    //     const createOrder = OrderService.createOrder(
+    //         makh: 1,
+    //         madh: 1,
+    //         ngaydat: ngaydat_mysql,
+    //         diachi_giao: address,
+    //         items: orderItems,
+    //         matrangthai: 1,
+    //         tongtien: tongtien_val,
+    //         paymentMethod: paymentMethod,
+    //     );
+    // } 
+
+
     const formatCurrency = (value: number | string | null | undefined) => {
         if (value == null || isNaN(Number(value))) return 'N/A';
         return Number(value).toLocaleString('vi-VN', {
@@ -289,7 +314,7 @@ const LandingPage = () => {
                     </div>
                     <div className="flex flex-row md:flex-column justify-content-between w-full md:w-auto align-items-center md:align-items-end mt-5 md:mt-0">
                         <span className="text-2xl font-semibold mb-2 align-self-center md:align-self-end">{formatCurrency(data.gia)}</span>
-                        {/* <Button icon="pi pi-shopping-cart" label="Add to Cart" disabled={data.inventoryStatus === 'OUTOFSTOCK'} size="small" className="mb-2"></Button> */}
+                        <Button icon="pi pi-shopping-cart" label="Add to Cart"  size="small" className="mb-2">Mua ngay</Button>
                         {/* <span className={`product-badge status-${data.inventoryStatus?.toLowerCase()}`}>{data.inventoryStatus}</span> */}
                     </div>
                 </div>
@@ -306,18 +331,15 @@ const LandingPage = () => {
                             <i className="pi pi-tag mr-2" />
                             <span className="font-semibold">{data.maloai}</span>
                         </div>
-                        {/* <span className={`product-badge status-${data.inventoryStatus?.toLowerCase()}`}>{data.inventoryStatus}</span> */}
                     </div>
                     <div className="flex flex-column align-items-center text-center mb-3">
-                        {/* <img src={data.hinhanh} alt={data.tensp} className="w-9 shadow-2 my-3 mx-0" /> */}
                         <Image src={data.hinhanh} width="250px" preview />
                         <div className="text-2xl font-bold">{data.tensp}</div>
                         <div className="mb-3">{data.mota}</div>
-                        {/* <Rating value={data.rating} readOnly cancel={false} /> */}
                     </div>
                     <div className="flex align-items-center justify-content-between">
                         <span className="text-2xl font-semibold">{formatCurrency(data.gia)}</span>
-                        {/* <Button icon="pi pi-shopping-cart" disabled={data.inventoryStatus === 'OUTOFSTOCK'} /> */}
+                        <Button icon="pi pi-shopping-cart"/>
                     </div>
                 </div>
             </div>

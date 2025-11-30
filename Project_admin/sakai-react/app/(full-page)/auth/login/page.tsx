@@ -24,20 +24,60 @@ const LoginPage = () => {
             const { user, token } = res.data;
 
             userStorage.addUser({
-                userId: user.id,
+                userId: user.id, // tùy nhân viên hay khách
                 username: user.hoten,
                 token,
-                email
+                email: user.email,
+                role: user.role // 🔹 thêm role
             });
+
             console.log('User saved to localStorage:', userStorage.getCurrentUser());
             console.log('Token:', userStorage.getCurrentToken());
 
             alert('Đăng nhập thành công!');
-            router.push('/dashboard');
+            // router.push('/dashboard');
+            if (user.role === 'customer'){
+                router.push('/landing');
+            }
+            else if (user.role === 'employee'){
+                router.push('/dashboard');
+            }
         } else {
             alert('Sai thông tin đăng nhập');
         }
     };
+
+    // const handleLogin = async () => {
+    //     const res = await AuthService.login(email, password);
+
+    //     console.log('Login response:', res);
+
+    //     if (res.success) {
+    //         const { user, token } = res.data.user;
+
+    //         userStorage.addUser({
+    //             role: user.role,
+    //             userId: user.id,
+    //             username: user.hoten,
+    //             token,
+    //             email
+    //         });
+    //         console.log('User saved to localStorage:', userStorage.getCurrentUser());
+    //         console.log('Token:', userStorage.getCurrentToken());
+
+    //         alert('Đăng nhập thành công!');
+
+    //         if (user.role === 'customer'){
+    //             router.push('/landing');
+    //         }
+    //         else if (user.role === 'employee'){
+    //             router.push('/dashboard');
+    //         }
+            
+    //     } else {
+    //         alert('Sai thông tin đăng nhập');
+    //     }
+    // };
 
 
     const router = useRouter();

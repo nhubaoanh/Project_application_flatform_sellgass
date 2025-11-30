@@ -1,6 +1,3 @@
-
-
-
 'use client';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
@@ -17,6 +14,7 @@ export default function StaffChatPage() {
     const handleSelectCustomer = async (customer: any) => {
         setSelectedCustomer(customer);
         const res = await ChatService.createRoom(customer.id, staffId);
+        console.log('✅ Room ID nhận từ backend:', res);
         setRoomId(res.roomId);
     };
 

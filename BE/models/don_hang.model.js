@@ -122,20 +122,8 @@ don_hang.delete = (id, callback) => {
   });
 };
 
-// don_hang.getDashboardData = (callback) => {
-//   const sqlString = "CALL sp_getDashboardStats()";
-//   db.query(sqlString, (err, result) => {
-//     if (err) {
-//       console.error("Lỗi khi lấy dữ liệu dashboard:", err);
-//       return callback(err);
-//     }
-//     // result[0] là dữ liệu thực
-//     console.log("Kết quả trả về từ MySQL:", result[0]); // ✅
-//     callback(result[0], null);
-//   });
-// }
 don_hang.getDashboardData = (callback) => {
-  console.log("🟢 Vào hàm getDashboardData()");
+  // console.log("🟢 Vào hàm getDashboardData()");
   const sql = "CALL sp_getDashboardStats()";
   db.query(sql, (err, result) => {
     if (err) {

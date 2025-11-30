@@ -2,7 +2,7 @@
 export const ChatService = {
     // Gọi API tạo phòng chat giữa user và staff
     createRoom(userId: string, staffId: string) {
-        return fetch('http://localhost:7890/api/chat/createRoom', {
+        return fetch('https://6jx7hnd2-7890.asse.devtunnels.ms/api/chat/createRoom', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
